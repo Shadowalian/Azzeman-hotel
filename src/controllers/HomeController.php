@@ -10,7 +10,16 @@ class HomeController {
     private $legacyCategoryMap = null;
     
     public function __construct() {
-        $this->db = Database::getInstance();
+        try {
+            if (DB_HOST === '' || DB_NAME === '') {
+                $this->db = null;
+                return;
+            }
+            $this->db = Database::getInstance();
+        } catch (Exception $e) {
+            error_log('HomeController: database unavailable — ' . $e->getMessage());
+            $this->db = null;
+        }
     }
     
     /**
@@ -97,6 +106,9 @@ class HomeController {
      * Get rooms
      */
     private function getRooms() {
+        if (!$this->db) {
+            return [];
+        }
         return $this->db->query('SELECT * FROM rooms ORDER BY id');
     }
 
@@ -107,6 +119,11 @@ class HomeController {
         $rooms = $this->getRooms();
         $fallback = ViewHelper::siteImage('rooms_image', '');
         foreach ($rooms as &$room) {
+            if (!$this->db) {
+                $room['display_image'] = $fallback;
+                $room['chips'] = ['Wi-Fi', 'Air conditioning', 'Flat-screen TV'];
+                continue;
+            }
             $img = $room['image_path'] ?? '';
             try {
                 $row = $this->db->queryOne(
@@ -135,6 +152,9 @@ class HomeController {
     }
 
     private function getMeetingVenuesPublic() {
+        if (!$this->db) {
+            return [];
+        }
         try {
             return $this->db->query('SELECT id, name, capacity_note FROM meeting_venues WHERE is_active = 1 ORDER BY id');
         } catch (Exception $e) {
@@ -146,6 +166,9 @@ class HomeController {
      * Get gallery categories
      */
     private function getGalleryCategories() {
+        if (!$this->db) {
+            return [];
+        }
         try {
             $rows = $this->db->query('SELECT id, name FROM gallery_categories ORDER BY name');
         } catch (Exception $e) {
@@ -182,6 +205,9 @@ class HomeController {
      * Get gallery images
      */
     private function getGalleryImages() {
+        if (!$this->db) {
+            return [];
+        }
         $images = $this->db->query(
             'SELECT gi.*, ib.title, ib.content,
                     gc.id AS category_id, gc.name AS category_name
