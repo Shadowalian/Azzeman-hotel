@@ -133,7 +133,7 @@ define('BREVO_SENDER_EMAIL', azzeman_env('BREVO_SENDER_EMAIL', 'reservation@azze
 define('BREVO_SENDER_NAME', azzeman_env('BREVO_SENDER_NAME', 'Azzeman Hotel'));
 
 define('BASE_PATH', __DIR__);
-define('PUBLIC_PATH', BASE_PATH . '/public');
+define('PUBLIC_PATH', BASE_PATH . '/cpanel-public');
 define('VIEWS_PATH', BASE_PATH . '/src/views');
 define('LOGS_PATH', BASE_PATH . '/logs');
 

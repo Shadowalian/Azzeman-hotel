@@ -1,0 +1,11 @@
+azzemanhotel_cpanel.zip
+*.zip
+*.zip.*
+.vercel
+.env
+logs/*.log
+assets/uploads/gallery/**
+assets/uploads/site-images/**
+assets/uploads/rooms/**
+!assets/uploads/**/.gitkeep
+vendor/phpmailer/phpmailer/language/**
