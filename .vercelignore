@@ -4,6 +4,8 @@ azzemanhotel_cpanel.zip
 .vercel
 .env
 logs/*.log
+composer.json
+composer.lock
 assets/uploads/gallery/**
 assets/uploads/site-images/**
 assets/uploads/rooms/**
