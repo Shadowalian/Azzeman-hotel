@@ -8,4 +8,3 @@ assets/uploads/gallery/**
 assets/uploads/site-images/**
 assets/uploads/rooms/**
 !assets/uploads/**/.gitkeep
-vendor/phpmailer/phpmailer/language/**
