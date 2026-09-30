@@ -1,0 +1,32 @@
+# Dependencies
+composer.lock
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+config.local.php
+
+# Runtime
+/logs/*
+!/logs/.gitkeep
+*.log
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.tmp
+_inspect.php
+_check_admin.php
+
+# Vercel
+.vercel
+
+# Deployment archives
+*.zip
+*.zip.*
+
+assets/uploads/**/*.tmp
