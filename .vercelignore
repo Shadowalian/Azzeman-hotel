@@ -6,7 +6,7 @@ azzemanhotel_cpanel.zip
 logs/*.log
 composer.json
 composer.lock
-index.php
+/index.php
 assets/uploads/gallery/**
 assets/uploads/site-images/**
 assets/uploads/rooms/**
